@@ -24,12 +24,12 @@ namespace Termgine {
       }
     }
 
-    public Display(ushort height, ushort width) {
+    public Display(ushort width, ushort height) {
       _height = height;
       _width = width;
     }
 
-    public Display(ushort height, ushort width, bool maximizeOnStart) : this(height, width) {
+    public Display(ushort width, ushort height, bool maximizeOnStart) : this(width, height) {
       if (maximizeOnStart) Maximize();
     }
 
@@ -39,7 +39,7 @@ namespace Termgine {
 
     public ConsoleColor BackgroundColor = ConsoleColor.Black;
 
-    public static void Maximize() {
+    public void Maximize() {
       var p = Process.GetCurrentProcess();
       ShowWindow(p.MainWindowHandle, 3); //SW_MAXIMIZE = 3
     }
@@ -49,16 +49,16 @@ namespace Termgine {
       Scenes.Add(scene);
     }
 
-    public void Start() {
+    public void Show() {
       Console.Clear();
       if (Scenes == null || Scenes.Count == 0) throw new ArgumentOutOfRangeException($"Scenes list is empty");
       if (Scenes.Count > 1 && CurrentScene == null) throw new ArgumentException("Current scene is not set");
       else CurrentScene = Scenes[0];
-      Console.SetCursorPosition(0, 0);
       DrawCurrentScene();
     }
 
     private void DrawCurrentScene() {
+      Console.SetCursorPosition(0, 0);
       var currentContent = CurrentScene.Content.Split('\n');
       var currentColors = CurrentScene.ContentColors.Split('\n');
 
@@ -70,33 +70,6 @@ namespace Termgine {
       }
     }
 
-    private ConsoleColor GetColorFromNumber(char c) {
-      switch (c) {
-          case ' ':
-            return Console.ForegroundColor;
-          case '0':
-            return ConsoleColor.Black;
-          case '1':
-            return ConsoleColor.Red;
-          case '2':
-            return ConsoleColor.Green;
-          case '3':
-            return ConsoleColor.Yellow;
-          case '4':
-            return ConsoleColor.Blue;
-          case '5':
-            return ConsoleColor.Magenta;
-          case '6':
-            return ConsoleColor.Cyan;
-          case '7':
-            return ConsoleColor.White;
-          case '8':
-            return ConsoleColor.DarkYellow;
-          default:
-            throw new ArgumentException("Wrong color mask: " + c);
-      }
-    }
-
     private static void WriteInColor(char c, ConsoleColor color) {
       Console.ForegroundColor = color;
       Console.Write(c);
@@ -105,6 +78,41 @@ namespace Termgine {
     public void SetBackgroundColor(ConsoleColor color) {
       BackgroundColor = color;
       Console.BackgroundColor = color;
+    }
+
+    public void ShowCursor() {
+      Console.CursorVisible = true;
+    }
+
+    public void HideCursor() {
+      Console.CursorVisible = false;
+    }
+
+    private ConsoleColor GetColorFromNumber(char c) {
+      switch (c) {
+        case ' ':
+          return BackgroundColor;
+        case '0':
+          return ConsoleColor.Black;
+        case '1':
+          return ConsoleColor.Red;
+        case '2':
+          return ConsoleColor.Green;
+        case '3':
+          return ConsoleColor.Yellow;
+        case '4':
+          return ConsoleColor.Blue;
+        case '5':
+          return ConsoleColor.Magenta;
+        case '6':
+          return ConsoleColor.Cyan;
+        case '7':
+          return ConsoleColor.White;
+        case '8':
+          return ConsoleColor.DarkYellow;
+        default:
+          throw new ArgumentException("Wrong color mask: " + c);
+      }
     }
 
     private ushort _height;

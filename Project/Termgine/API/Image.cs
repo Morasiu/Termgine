@@ -1,4 +1,6 @@
-﻿namespace Termgine {
+﻿using System;
+
+namespace Termgine {
   public class Image : GameObject {
 
     public ushort Width => GetWidth();
@@ -23,7 +25,7 @@
     public Image(Vector2 position) : base(position) {
     }
 
-    public Image(Vector2 position, string colorMask) : base(position) {
+    public Image(Vector2 position, string content, char color) : base (position, content, color) {
     }
 
     public Image(Vector2 position, string content, string colorMask) : base(position, content, colorMask) {

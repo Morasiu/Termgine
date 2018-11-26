@@ -70,10 +70,10 @@ namespace Termgine {
       var contentLines = content.Split('\n');
       for (var y = 0; y < contentLines.Length; y++) {
         var globalPositionY = y + position.Y;
-        if (globalPositionY > Height) continue;
+        if (globalPositionY >= Height) continue;
         for (var x = 0; x < contentLines[y].Length; x++) {
           var globalPositionX = x + position.X;
-          if (globalPositionX > Height) break;
+          if (globalPositionX >= Width) break;
           if (contentLines[y][x] != ' ')
             _content[globalPositionY][globalPositionX] = contentLines[y][x];
         }
@@ -84,10 +84,10 @@ namespace Termgine {
       var contentLines = colorMask.Split('\n');
       for (var y = 0; y < contentLines.Length; y++) {
         var globalPositionY = y + position.Y;
-        if (globalPositionY > Height) continue;
+        if (globalPositionY >= Height) continue;
         for (var x = 0; x < contentLines[y].Length; x++) {
           var globalPositionX = x + position.X;
-          if (globalPositionX > Height) break;
+          if (globalPositionX >= Height) break;
           if (contentLines[y][x] != ' ')
             _colorMask[globalPositionY][globalPositionX] = contentLines[y][x];
         }

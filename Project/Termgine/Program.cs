@@ -1,10 +1,25 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Termgine {
   class Program {
     private static void Main(string[] args) {
-      var display = new Display(30, 50);
+      var display = new Display(Display.MaxWidth, Display.MaxHeight);
       var scene = new Scene();
+      StreamReader sr = new StreamReader("../../../Resources/mario.aa");
+      // Read the stream to a string, and write the string to the console.
+      var marioAA = sr.ReadToEnd();
+      marioAA = marioAA.Replace("\r\n" , "\n");
+      Console.WriteLine(marioAA);
+
+      sr.Close();
+      StreamReader sr2 = new StreamReader("../../../Resources/mario.mc");
+
+      var marioMC = sr2.ReadToEnd().Replace("\r\n", "\n");
+
+      sr2.Close();
+
       var mario = "      ██████████        \n" +
                   "    ██████████████████  \n" +
                   "    ██████████████      \n" +
@@ -40,13 +55,12 @@ namespace Termgine {
                            "88888888         8888888\n";
 
 
-      var image = new Image(new Vector2(10, 2), mario, marioColorMask);
+      var image = new Image(new Vector2(10, 2), marioAA, marioMC);
       scene.AddObject(image);
-      display.SetBackgroundColor(ConsoleColor.Black);
+      display.Maximize();
+      display.HideCursor();
       display.AddScene(scene);
-      Console.CursorVisible = false;
-      display.Start();
-      Console.ReadKey();
+      display.Show();
       Console.ReadKey();
     }
   }
