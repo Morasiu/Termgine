@@ -1,7 +1,7 @@
 # Termgine
 Game engine for games in terminal.
 
-![Mario](Docs/mario.png)
+![Mario](Docs/mario.PNG)
 
 ## Roadmap
 
