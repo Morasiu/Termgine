@@ -1,32 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 
 namespace Termgine {
   public class Display {
-    public static ushort MaxHeight => (ushort) Console.LargestWindowHeight;
-    public static ushort MaxWidth => (ushort) Console.LargestWindowWidth;
+    #region Public constructors
 
-    public ushort Height {
+    public Display() {
+      Width = Console.WindowWidth;
+      Height = Console.WindowHeight;
+    }
+
+    public Display(int width, int height) {
+      Height = height;
+      Width = width;
+    }
+
+    #endregion
+
+    #region Public variables
+
+    public static int MaxHeight => Console.LargestWindowHeight;
+    public static int MaxWidth => Console.LargestWindowWidth;
+
+    public int Height {
       get => _height;
       set {
+        if (value < 1)
+          throw new ArgumentException("Height too small");
         _height = value;
         OnWindowSizeChanged();
       }
     }
 
-    public ushort Width {
+    public int Width {
       get => _width;
       set {
+        if (value < 1)
+          throw new ArgumentException("Width too small");
         _width = value;
         OnWindowSizeChanged();
       }
-    }
-
-    public Display(ushort width, ushort height) {
-      _height = height;
-      _width = width;
     }
 
     public List<Scene> Scenes;
@@ -34,6 +50,10 @@ namespace Termgine {
     public Scene CurrentScene { get; set; }
 
     public ConsoleColor BackgroundColor = ConsoleColor.Black;
+
+    #endregion
+
+    #region Public methods
 
     public void AddScene(Scene scene) {
       if (Scenes == null) Scenes = new List<Scene>();
@@ -43,10 +63,43 @@ namespace Termgine {
     public void Show() {
       Console.Clear();
       if (Scenes == null || Scenes.Count == 0) throw new ArgumentOutOfRangeException($"Scenes list is empty");
-      if (Scenes.Count > 1 && CurrentScene == null) throw new ArgumentException("Current scene is not set");
+      if (Scenes.Count > 1 && CurrentScene == null) throw new ArgumentException("Set Current scene");
       else CurrentScene = Scenes[0];
       DrawCurrentScene();
     }
+
+    public void Refresh() {
+      DrawCurrentScene();
+    }
+
+    public void SetBackgroundColor(ConsoleColor color) {
+      BackgroundColor = color;
+      Console.BackgroundColor = color;
+    }
+
+    public void ShowCursor() {
+      Console.CursorVisible = true;
+    }
+
+    public void HideCursor() {
+      Console.CursorVisible = false;
+    }
+
+    public ConsoleKeyInfo WaitForKey() {
+      return Console.ReadKey(true);
+    }
+
+    #endregion
+
+    #region Private variables
+
+    private int _height = Console.WindowHeight;
+
+    private int _width = Console.WindowWidth;
+
+    #endregion
+
+    #region Private methods
 
     private void DrawCurrentScene() {
       Console.SetCursorPosition(0, 0);
@@ -64,19 +117,6 @@ namespace Termgine {
     private static void WriteInColor(char c, ConsoleColor color) {
       Console.ForegroundColor = color;
       Console.Write(c);
-    }
-
-    public void SetBackgroundColor(ConsoleColor color) {
-      BackgroundColor = color;
-      Console.BackgroundColor = color;
-    }
-
-    public void ShowCursor() {
-      Console.CursorVisible = true;
-    }
-
-    public void HideCursor() {
-      Console.CursorVisible = false;
     }
 
     private ConsoleColor GetColorFromNumber(char c) {
@@ -106,14 +146,12 @@ namespace Termgine {
       }
     }
 
-    private ushort _height;
-
-    private ushort _width;
-
     private void OnWindowSizeChanged() {
       Console.SetWindowSize(1, 1);
       Console.SetBufferSize(_width, _height);
       Console.SetWindowSize(_width, _height);
     }
+
+    #endregion
   }
 }

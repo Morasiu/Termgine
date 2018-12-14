@@ -3,17 +3,21 @@ using System.Collections.Generic;
 
 namespace Termgine {
   public class Scene {
+    #region Constructor
+
     public Scene() {
-      Height = (ushort) Console.WindowHeight;
-      Width = (ushort) Console.WindowWidth;
+      Height = Console.WindowHeight;
+      Width =  Console.WindowWidth;
       GameObjects = new List<GameObject>();
     }
+
+    #endregion
 
     #region Public variables
 
     public List<GameObject> GameObjects;
 
-    public ushort Width {
+    public int Width {
       get => _width;
 
       set {
@@ -22,7 +26,7 @@ namespace Termgine {
       }
     }
 
-    public ushort Height {
+    public int Height {
       get => _height;
       set {
         _height = value;
@@ -57,7 +61,7 @@ namespace Termgine {
     #region Public methods
 
     public void AddObject(GameObject o) {
-      AddObjectAt(o, Vector2.Zero);
+      AddObjectAt(o, o.Position);
     }
 
     public void AddObjectAt(GameObject o, Vector2 position) {
@@ -71,6 +75,8 @@ namespace Termgine {
     }
 
     #endregion
+
+    #region Private
 
     private void AddObjectToGlobalContent(string content, Vector2 position) {
       var contentLines = content.Split('\n');
@@ -100,8 +106,8 @@ namespace Termgine {
       }
     }
 
-    private ushort _width;
-    private ushort _height;
+    private int _width;
+    private int _height;
     private char[][] _content;
     private char[][] _colorMask;
 
@@ -115,7 +121,7 @@ namespace Termgine {
       for (var i = 0; i < _content.Length; i++) {
         _content[i] = new char[Width];
         for (var index = 0; index < _content[i].Length; index++) {
-           _content[i][index] = ' ';
+          _content[i][index] = ' ';
         }
       }
     }
@@ -130,5 +136,7 @@ namespace Termgine {
       }
 
     }
+
+    #endregion
   }
 }

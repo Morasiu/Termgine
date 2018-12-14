@@ -2,11 +2,29 @@
 
 namespace Termgine {
   public class Image : GameObject {
+    #region Constructors
+
+    public Image(Vector2 position) : base(position) {
+    }
+
+    public Image(Vector2 position, string content, char color) : base (position, content, color) {
+    }
+
+    public Image(Vector2 position, string content, string colorMask) : base(position, content, colorMask) {
+    }
+
+    #endregion
+
+    #region Public variables
 
     public ushort Width => GetWidth();
     public ushort Height => GetHeight();
 
-    private ushort GetHeight() {
+    #endregion
+
+    #region Public methods
+
+    public ushort GetHeight() {
       return (ushort) Content.Split("\n").Length;
     }
 
@@ -22,13 +40,6 @@ namespace Termgine {
       return maxWidth;
     }
 
-    public Image(Vector2 position) : base(position) {
-    }
-
-    public Image(Vector2 position, string content, char color) : base (position, content, color) {
-    }
-
-    public Image(Vector2 position, string content, string colorMask) : base(position, content, colorMask) {
-    }
+    #endregion
   }
 }
