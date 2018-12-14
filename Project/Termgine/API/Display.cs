@@ -29,20 +29,11 @@ namespace Termgine {
       _width = width;
     }
 
-    public Display(ushort width, ushort height, bool maximizeOnStart) : this(width, height) {
-      if (maximizeOnStart) Maximize();
-    }
-
     public List<Scene> Scenes;
 
     public Scene CurrentScene { get; set; }
 
     public ConsoleColor BackgroundColor = ConsoleColor.Black;
-
-    public void Maximize() {
-      var p = Process.GetCurrentProcess();
-      ShowWindow(p.MainWindowHandle, 3); //SW_MAXIMIZE = 3
-    }
 
     public void AddScene(Scene scene) {
       if (Scenes == null) Scenes = new List<Scene>();
@@ -118,9 +109,6 @@ namespace Termgine {
     private ushort _height;
 
     private ushort _width;
-
-    [DllImport("user32.dll")]
-    private static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
 
     private void OnWindowSizeChanged() {
       Console.SetWindowSize(1, 1);

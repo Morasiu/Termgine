@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 namespace Termgine {
   public class Scene {
-    public List<GameObject> GameObjects;
-
     public Scene() {
       Height = (ushort) Console.WindowHeight;
       Width = (ushort) Console.WindowWidth;
       GameObjects = new List<GameObject>();
     }
+
+    #region Public variables
+
+    public List<GameObject> GameObjects;
 
     public ushort Width {
       get => _width;
@@ -50,6 +52,10 @@ namespace Termgine {
       }
     }
 
+    #endregion
+
+    #region Public methods
+
     public void AddObject(GameObject o) {
       AddObjectAt(o, Vector2.Zero);
     }
@@ -64,7 +70,7 @@ namespace Termgine {
       AddObjectColorToGlobalColorMask(o.ColorMask, position);
     }
 
-    private ushort _width;
+    #endregion
 
     private void AddObjectToGlobalContent(string content, Vector2 position) {
       var contentLines = content.Split('\n');
@@ -94,6 +100,7 @@ namespace Termgine {
       }
     }
 
+    private ushort _width;
     private ushort _height;
     private char[][] _content;
     private char[][] _colorMask;

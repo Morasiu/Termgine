@@ -57,7 +57,6 @@ namespace Termgine {
 
       var image = new Image(new Vector2(10, 2), marioAA, marioMC);
       scene.AddObject(image);
-      display.Maximize();
       display.HideCursor();
       display.AddScene(scene);
       display.Show();

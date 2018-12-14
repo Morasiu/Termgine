@@ -3,11 +3,7 @@ using System.Text;
 
 namespace Termgine {
   public class GameObject {
-    public Vector2 Position { get; set; }
-
-    public string Content { get; set; }
-
-    public string ColorMask { get; set;}
+    #region Public contructors
 
     public GameObject(Vector2 position, string content, string colorMask) : this (position, content) {
       ColorMask = colorMask;
@@ -22,9 +18,27 @@ namespace Termgine {
       Content = content;
     }
 
+    #endregion
+
+    #region Protected constructor
+
     protected GameObject(Vector2 position) {
       Position = position;
     }
+
+    #endregion
+
+    #region Public variables
+
+    public Vector2 Position { get; set; }
+
+    public string Content { get; set; }
+
+    public string ColorMask { get; set;}
+
+    #endregion
+
+    #region Privates
 
     private void SetColor(char color) {
       var builder = new StringBuilder();
@@ -35,5 +49,7 @@ namespace Termgine {
 
       ColorMask = builder.ToString();
     }
+
+    #endregion
   }
 }
