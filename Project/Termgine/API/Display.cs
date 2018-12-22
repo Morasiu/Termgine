@@ -91,6 +91,20 @@ namespace Termgine {
 
     #endregion
 
+    #region Static variables
+
+    public static Vector2 LeftTopCorner = Vector2.Zero;
+
+    public static Vector2 RightTopCorner = new Vector2(Console.WindowWidth, 0);
+
+    public static Vector2 LeftBottomCorner = new Vector2(0, Console.WindowHeight);
+
+    public static Vector2 RightBottomCornet = new Vector2(Console.WindowWidth, Console.WindowHeight);
+
+    public static Vector2 Center = new Vector2(Console.WindowWidth/2, Console.WindowHeight/2);
+
+    #endregion
+
     #region Private variables
 
     private int _height = Console.WindowHeight;

@@ -17,4 +17,8 @@
     <None Remove="NewFolder\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FIGlet.Net" Version="1.1.1" />
+  </ItemGroup>
+
 </Project>

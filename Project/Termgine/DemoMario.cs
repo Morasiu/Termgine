@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace Termgine {
-  class Program {
+  class DemoMario {
     private static void Main(string[] args) {
       var mario = 
       "      ██████████        \n" +
@@ -43,20 +43,16 @@ namespace Termgine {
       "88888888         8888888\n";
 
       // Scene setup
-      var display = new Display(Display.MaxWidth/2, Display.MaxHeight/2);
-      var image = new Image(new Vector2(10, 10), mario, marioColorMask);
+      var display = new Display();
+      var a = Display.Center;
+      var image = new Image(new Vector2(50, 0), mario, marioColorMask);
+      // var image = new Image(Vector2.Zero, mario, marioColorMask);
       var scene = new Scene();
       scene.AddObject(image);
       display.HideCursor();
       display.AddScene(scene);
       display.Show();
       display.WaitForKey();
-      while (true) {
-        Thread.Sleep(100/10);
-        // display.WaitForKey();
-        display.CurrentScene.GameObjects[0].Position.X++;
-        display.Refresh();
-      }
     }
   }
 }
