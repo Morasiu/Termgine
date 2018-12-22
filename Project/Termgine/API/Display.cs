@@ -22,8 +22,8 @@ namespace Termgine {
 
     #region Public variables
 
-    public static int MaxHeight => Console.LargestWindowHeight;
-    public static int MaxWidth => Console.LargestWindowWidth;
+    public static int MaxHeight = Console.LargestWindowHeight;
+    public static int MaxWidth = Console.LargestWindowWidth;
 
     public int Height {
       get => _height;
@@ -147,6 +147,7 @@ namespace Termgine {
     }
 
     private void OnWindowSizeChanged() {
+      if(RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return;
       Console.SetWindowSize(1, 1);
       Console.SetBufferSize(_width, _height);
       Console.SetWindowSize(_width, _height);

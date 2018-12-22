@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Termgine {
   public class Scene {
@@ -36,25 +37,27 @@ namespace Termgine {
 
     public string Content {
       get {
-        var content = "";
-        foreach (var line in _content) {
-          content += new string(line) + "\n";
+        // TODO More efficent instead of reseting all content
+        var content = new StringBuilder();
+        UpdateContent();
+        foreach (var line in _content){
+          content.Append(new string(line) + "\n");
         }
-
-        return content;
+        return content.ToString();
       }
     }
 
     public string ContentColors {
       get {
-        var colorMask = "";
-        foreach (var line in _colorMask) {
-          colorMask += new string(line) + "\n";
+        var colorMask = new StringBuilder();
+        UpdateColorMask();
+        foreach (var line in _colorMask){
+          colorMask.Append(new string(line) + "\n");
         }
-
-        return colorMask;
+        return colorMask.ToString();
       }
     }
+
 
     #endregion
 
@@ -76,11 +79,20 @@ namespace Termgine {
 
     #endregion
 
-    #region Private
+    #region Private variables
 
-    private void AddObjectToGlobalContent(string content, Vector2 position) {
-      var contentLines = content.Split('\n');
-      for (var y = 0; y < contentLines.Length; y++) {
+    private int _width;
+    private int _height;
+    private char[][] _content;
+    private char[][] _colorMask;
+
+    #endregion
+
+    #region Private methods
+
+    private void AddObjectToGlobalContent(string gameObjectContent, Vector2 position) {
+      var contentLines = gameObjectContent.Split('\n');
+      for (var y = contentLines.Length - 1; y >= 0; y--) {
         var globalPositionY = y + position.Y;
         if (globalPositionY >= Height) continue;
         for (var x = 0; x < contentLines[y].Length; x++) {
@@ -92,9 +104,9 @@ namespace Termgine {
       }
     }
 
-    private void AddObjectColorToGlobalColorMask(string colorMask, Vector2 position) {
-      var contentLines = colorMask.Split('\n');
-      for (var y = 0; y < contentLines.Length; y++) {
+    private void AddObjectColorToGlobalColorMask(string gameObjectColorMask, Vector2 position) {
+      var contentLines = gameObjectColorMask.Split('\n');
+      for (var y = contentLines.Length - 1; y >= 0; y--) {
         var globalPositionY = y + position.Y;
         if (globalPositionY >= Height) continue;
         for (var x = 0; x < contentLines[y].Length; x++) {
@@ -106,10 +118,20 @@ namespace Termgine {
       }
     }
 
-    private int _width;
-    private int _height;
-    private char[][] _content;
-    private char[][] _colorMask;
+    private void UpdateContent(){
+      InitContent();
+      foreach (var gameObject in GameObjects){
+        AddObjectToGlobalContent(gameObject.Content, gameObject.Position);
+      }
+    }
+
+    private void UpdateColorMask(){
+      InitColorMask();
+      foreach (var gameObject in GameObjects){
+        AddObjectColorToGlobalColorMask(gameObject.ColorMask, gameObject.Position);
+        }
+    }
+
 
     private void OnSizeChanged() {
       InitContent();
