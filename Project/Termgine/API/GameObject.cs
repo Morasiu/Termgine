@@ -7,23 +7,19 @@ namespace Termgine {
 		private Vector2 _position;
 		#region Public contructors
 
-		public GameObject(Vector2 position, string content, string colorMask) : this(position, content)
-		{
+		public GameObject(Vector2 position, string content, string colorMask) : this(position, content) {
 			ColorMask = colorMask;
 		}
 
-		public GameObject(Vector2 position, string content) : this(position)
-		{
+		public GameObject(Vector2 position, string content) : this(position) {
 			Content = content;
 		}
-		public GameObject(Vector2 position, string content, char color) : this(position, content)
-		{
+		public GameObject(Vector2 position, string content, char color) : this(position, content) {
 			SetColor(color);
 		}
 
 
-		public GameObject(string content)
-		{
+		public GameObject(string content) {
 			Content = content;
 			Position = Vector2.Zero;
 		}
@@ -38,8 +34,7 @@ namespace Termgine {
       ColorMask = "";
     }
 
-		protected GameObject(Vector2 position)
-		{
+		protected GameObject(Vector2 position) {
 			Position = position;
 		}
 
@@ -63,8 +58,7 @@ namespace Termgine {
 
 		#region Public methods
 
-		public void SetColor(char color)
-		{
+		public void SetColor(char color) {
 			var builder = new StringBuilder();
 			for (var index = 0; index < Content.Length; index++)
 			{

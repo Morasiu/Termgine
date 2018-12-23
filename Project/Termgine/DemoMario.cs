@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Termgine {
   class DemoMario {
-    private static void Main(string[] args) {
+    private static void NotMain(string[] args) {
       var mario = 
       "      ██████████        \n" +
       "    ██████████████████  \n" +

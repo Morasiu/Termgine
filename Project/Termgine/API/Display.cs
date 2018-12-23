@@ -161,6 +161,7 @@ namespace Termgine {
     }
 
     private void OnWindowSizeChanged() {
+      // "Linux support" It's just magic
       if(RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return;
       Console.SetWindowSize(1, 1);
       Console.SetBufferSize(_width, _height);
