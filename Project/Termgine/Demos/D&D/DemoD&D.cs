@@ -7,9 +7,9 @@ using System.Threading;
 namespace Termgine {
   class DemoMenu {
     private static void Main(string[] args) {
-      var dragonAA = File.ReadAllText("./Resources/dragon.aa");
+      var dragonAA = File.ReadAllText("./Demos/D&D/Resources/dragon.aa");
       var dragon = new Image(Vector2.Zero, dragonAA, '1');
-      var leftDragonAA = File.ReadAllText("./Resources/leftDragon.aa");
+      var leftDragonAA = File.ReadAllText("./Demos/D&D/Resources/leftDragon.aa");
       var leftDragon = new Image(Vector2.Zero, leftDragonAA, '1');
       // Scene setup
       var display = new Display();
