@@ -1,7 +1,9 @@
 # Termgine
 Game engine for games in terminal.
 
-##Examples
+Check our [Wiki](https://github.com/Morasiu/Termgine/wiki)
+
+## Examples
 * D&D Menu
 ![D&D](Docs/D&D_menu.png)
 * Mario (in color!)
