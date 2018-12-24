@@ -5,10 +5,11 @@ namespace Termgine {
   public struct Vector2 {
     #region Static variables
     public static Vector2 Zero => new Vector2(0, 0);
-    public static Vector2 Up => new Vector2(-1, 0);
-    public static Vector2 Down => new Vector2(1, 0);
+    public static Vector2 Up => new Vector2(0, -1);
+    public static Vector2 Down => new Vector2(0, 1);
     public static Vector2 Left => new Vector2(-1, 0);
     public static Vector2 Right => new Vector2(1, 0);
+    public static Vector2 One => new Vector2(1, 1);
     #endregion
 
     public Vector2(int x, int y) {
@@ -31,7 +32,7 @@ namespace Termgine {
     
     public override int GetHashCode() => (this.X, this.Y).GetHashCode();
     #endregion
-    
+
     #region Operators
     // Vector2, Vector2
     public static Vector2 operator +(Vector2 v1, Vector2 v2) => new Vector2(v1.X + v2.X, v1.Y + v2.Y);
