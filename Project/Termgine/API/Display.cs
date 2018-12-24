@@ -5,169 +5,150 @@ using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 
 namespace Termgine {
-  public class Display {
-    #region Public constructors
+	public class Display
+	{
+		#region Public constructors
 
-    public Display() {
-      Width = Console.WindowWidth;
-      Height = Console.WindowHeight;
-    }
+		public Display() { }
 
-    public Display(int width, int height) {
-      Height = height;
-      Width = width;
-    }
+		#endregion
 
-    #endregion
+		#region Public variables
 
-    #region Public variables
+		public int Height => _height;
 
-    public static int MaxHeight = Console.LargestWindowHeight;
-    public static int MaxWidth = Console.LargestWindowWidth;
+		public int Width => _width;
 
-    public int Height {
-      get => _height;
+		public List<Scene> Scenes { get; set; }
+
+		public Scene CurrentScene { get; set; }
+
+		public ConsoleColor BackgroundColor { get => _backgroundColor; 
       set {
-        if (value < 1)
-          throw new ArgumentException("Height too small");
-        _height = value;
-        OnWindowSizeChanged();
-      }
-    }
+        _backgroundColor = value;
+        Console.BackgroundColor = value;
+     }}
+		public Vector2 LeftTopCorner { get; } = Vector2.Zero;
 
-    public int Width {
-      get => _width;
-      set {
-        if (value < 1)
-          throw new ArgumentException("Width too small");
-        _width = value;
-        OnWindowSizeChanged();
-      }
-    }
+		public Vector2 RightTopCorner { get; } = new Vector2(Console.WindowWidth, 0);
 
-    public List<Scene> Scenes;
+		public Vector2 LeftBottomCorner { get; } = new Vector2(0, Console.WindowHeight);
 
-    public Scene CurrentScene { get; set; }
+		public Vector2 RightBottomCornet { get; } = new Vector2(Console.WindowWidth, Console.WindowHeight);
 
-    public ConsoleColor BackgroundColor = ConsoleColor.Black;
+		public Vector2 Center { get; } = new Vector2(Console.WindowWidth / 2, Console.WindowHeight / 2);
 
-    #endregion
 
-    #region Public methods
+		#endregion
 
-    public void AddScene(Scene scene) {
-      if (Scenes == null) Scenes = new List<Scene>();
-      Scenes.Add(scene);
-    }
+		#region Public methods
 
-    public void Show() {
-      Console.Clear();
-      if (Scenes == null || Scenes.Count == 0) throw new ArgumentOutOfRangeException($"Scenes list is empty");
-      if (Scenes.Count > 1 && CurrentScene == null) throw new ArgumentException("Set Current scene");
-      else CurrentScene = Scenes[0];
-      DrawCurrentScene();
-    }
+		public void AddScene(Scene scene) {
+			if (Scenes == null) {
+				Scenes = new List<Scene>();
+				CurrentScene = scene;
+			}
+			Scenes.Add(scene);
+		}
 
-    public void Refresh() {
-      DrawCurrentScene();
-    }
+		public void Show() {
+			Console.Clear();
+			DrawCurrentScene();
+		}
 
-    public void SetBackgroundColor(ConsoleColor color) {
-      BackgroundColor = color;
-      Console.BackgroundColor = color;
-    }
+		public void Refresh() {
+			DrawCurrentScene();
+		}
 
-    public void ShowCursor() {
-      Console.CursorVisible = true;
-    }
+		public void ShowCursor() {
+			Console.CursorVisible = true;
+		}
 
-    public void HideCursor() {
-      Console.CursorVisible = false;
-    }
+		public void HideCursor() {
+			Console.CursorVisible = false;
+		}
 
-    public ConsoleKeyInfo WaitForKey() {
-      return Console.ReadKey(true);
-    }
+		public ConsoleKeyInfo WaitForKey() {
+			return Console.ReadKey(true);
+		}
 
-    #endregion
+		#endregion
 
-    #region Static variables
+		#region Static variables
 
-    public static Vector2 LeftTopCorner = Vector2.Zero;
+		public static int MaxHeight = Console.LargestWindowHeight;
+		public static int MaxWidth = Console.LargestWindowWidth;
 
-    public static Vector2 RightTopCorner = new Vector2(Console.WindowWidth, 0);
+		#endregion
 
-    public static Vector2 LeftBottomCorner = new Vector2(0, Console.WindowHeight);
+		#region Private variables
 
-    public static Vector2 RightBottomCornet = new Vector2(Console.WindowWidth, Console.WindowHeight);
+		private int _height = Console.WindowHeight;
 
-    public static Vector2 Center = new Vector2(Console.WindowWidth/2, Console.WindowHeight/2);
+		private int _width = Console.WindowWidth;
+		private ConsoleColor _backgroundColor = Console.BackgroundColor;
 
-    #endregion
+		#endregion
 
-    #region Private variables
+		#region Private methods
 
-    private int _height = Console.WindowHeight;
+		private void DrawCurrentScene(){
+			if (CurrentScene == null) throw new NullReferenceException("CurrentScene is null");
+			Console.SetCursorPosition(0, 0);
+			var currentContent = CurrentScene.Content.Split('\n');
+			var currentColors = CurrentScene.ContentColors.Split('\n');
 
-    private int _width = Console.WindowWidth;
+			for (var y = 0; y < CurrentScene.Height; y++)
+			{
+				for (var x = 0; x < CurrentScene.Width; x++)
+				{
+					var color = GetColorFromNumber(currentColors[y][x]);
+					WriteInColor(currentContent[y][x], color);
+				}
+			}
+		}
 
-    #endregion
+		private static void WriteInColor(char c, ConsoleColor color) {
+			Console.ForegroundColor = color;
+			Console.Write(c);
+		}
 
-    #region Private methods
+		private ConsoleColor GetColorFromNumber(char c) {
+			switch (c)
+			{
+				case ' ':
+					return BackgroundColor;
+				case '0':
+					return ConsoleColor.Black;
+				case '1':
+					return ConsoleColor.Red;
+				case '2':
+					return ConsoleColor.Green;
+				case '3':
+					return ConsoleColor.Yellow;
+				case '4':
+					return ConsoleColor.Blue;
+				case '5':
+					return ConsoleColor.Magenta;
+				case '6':
+					return ConsoleColor.Cyan;
+				case '7':
+					return ConsoleColor.White;
+				case '8':
+					return ConsoleColor.DarkYellow;
+				default:
+					throw new ArgumentException("Wrong color mask: " + c);
+			}
+		}
 
-    private void DrawCurrentScene() {
-      Console.SetCursorPosition(0, 0);
-      var currentContent = CurrentScene.Content.Split('\n');
-      var currentColors = CurrentScene.ContentColors.Split('\n');
+		private void OnWindowSizeChanged() {
+			// "Linux support" It's just magic
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return;
+			Console.SetWindowSize(1, 1);
+			Console.SetBufferSize(_width, _height);
+			Console.SetWindowSize(_width, _height);
+		}
 
-      for (var y = 0; y < CurrentScene.Height; y++) {
-        for (var x = 0; x < CurrentScene.Width; x++) {
-          var color = GetColorFromNumber(currentColors[y][x]);
-          WriteInColor(currentContent[y][x], color);
-        }
-      }
-    }
-
-    private static void WriteInColor(char c, ConsoleColor color) {
-      Console.ForegroundColor = color;
-      Console.Write(c);
-    }
-
-    private ConsoleColor GetColorFromNumber(char c) {
-      switch (c) {
-        case ' ':
-          return BackgroundColor;
-        case '0':
-          return ConsoleColor.Black;
-        case '1':
-          return ConsoleColor.Red;
-        case '2':
-          return ConsoleColor.Green;
-        case '3':
-          return ConsoleColor.Yellow;
-        case '4':
-          return ConsoleColor.Blue;
-        case '5':
-          return ConsoleColor.Magenta;
-        case '6':
-          return ConsoleColor.Cyan;
-        case '7':
-          return ConsoleColor.White;
-        case '8':
-          return ConsoleColor.DarkYellow;
-        default:
-          throw new ArgumentException("Wrong color mask: " + c);
-      }
-    }
-
-    private void OnWindowSizeChanged() {
-      // "Linux support" It's just magic
-      if(RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return;
-      Console.SetWindowSize(1, 1);
-      Console.SetBufferSize(_width, _height);
-      Console.SetWindowSize(_width, _height);
-    }
-
-    #endregion
-  }
+		#endregion
+	}
 }

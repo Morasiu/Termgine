@@ -16,7 +16,7 @@ namespace Termgine {
       var scene = new Scene();
       var welcome = new Label("  Welcome to D&D  \n"+
                               " Terminal Edition "); 
-      welcome.Position = Display.Center - new Vector2(welcome.GetWidth()/2, 0);
+      welcome.Position = display.Center - new Vector2(welcome.GetWidth()/2, 0);
       welcome.SetColor('1');
       var menu = new Border(welcome, '6', BorderType.DoubleExtended);
       dragon.Position = menu.Position - new Vector2(-menu.GetWidth() - 1, dragon.GetHeight()/2);

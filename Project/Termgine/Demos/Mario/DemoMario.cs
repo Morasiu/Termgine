@@ -44,9 +44,7 @@ namespace Termgine {
 
       // Scene setup
       var display = new Display();
-      var a = Display.Center;
       var image = new Image(new Vector2(50, 0), mario, marioColorMask);
-      // var image = new Image(Vector2.Zero, mario, marioColorMask);
       var scene = new Scene();
       scene.AddObject(image);
       display.HideCursor();
