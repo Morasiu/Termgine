@@ -21,10 +21,6 @@ namespace Termgine {
       var menu = new Border(welcome, '6', BorderType.DoubleExtended);
       dragon.Position = menu.Position - new Vector2(-menu.GetWidth() - 1, dragon.GetHeight()/2);
       leftDragon.Position = new Vector2(dragon.Position.X - menu.GetWidth() - leftDragon.GetWidth() - 1, dragon.Position.Y);
-
-      dragon.Position += Vector2.Up * 5;
-
-
       scene.AddObject(menu);
       scene.AddObject(dragon);
       scene.AddObject(leftDragon);
