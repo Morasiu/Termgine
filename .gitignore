@@ -504,3 +504,8 @@ Project/Termgine/Program.cs
 Project/Termgine/.vscode/launch.json
 Project/Termgine/.vscode/settings.json
 Project/Termgine/.vscode/tasks.json
+
+.vscode
+Project/.vscode
+Project/Demos/DnD/obj
+Project/Termgine/.vscode
