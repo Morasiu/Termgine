@@ -51,6 +51,8 @@ namespace Termgine {
 		#region Public methods
 
 		public void SetColor(char color) {
+			var charValue = Convert.ToInt16(color);
+			if (charValue < 48 || charValue > 57) throw new ArgumentException("Color not recognized");
 			var builder = new StringBuilder();
 			for (var index = 0; index < Content.Length; index++) {
 				if (Content[index] == '\n' || Content[index] == ' ') builder.Append(Content[index]);
