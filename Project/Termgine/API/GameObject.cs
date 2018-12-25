@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 
 namespace Termgine {
@@ -41,6 +42,10 @@ namespace Termgine {
 
 		public string ColorMask { get; set; }
 
+		public int Width => Content.Split('\n').Max(line => line.Length);
+
+		public int Height => Content.Split('\n').Length;
+
 		#endregion
 
 		#region Public methods
@@ -51,25 +56,8 @@ namespace Termgine {
 				if (Content[index] == '\n' || Content[index] == ' ') builder.Append(Content[index]);
 				else builder.Append(color);
 			}
-
 			ColorMask = builder.ToString();
 		}
-
-    public int GetHeight() {
-      return Content.Split("\n").Length;
-    }
-
-    public int GetWidth() {
-      var lines = Content.Split('\n');
-      int maxWidth = 0;
-      foreach (var line in lines) {
-        if (line.Length > maxWidth) {
-          maxWidth =  line.Length;
-        }
-      }
-
-      return maxWidth;
-    }
 
 		#endregion
 
