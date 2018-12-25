@@ -6,6 +6,7 @@ Be sure to check our [Wiki](https://github.com/Morasiu/Termgine/wiki) and [Trell
 
 and let's [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted) 👍
 
+You can catch me on [Gitter](https://gitter.im/Termgine) too!
 ## Examples
 * D&D Menu
   ![D&D](Docs/D&D_menu.png)
