@@ -2,8 +2,7 @@
 using System.Text;
 
 namespace Termgine {
-	public class GameObject
-	{
+	public class GameObject {
 		private Vector2 _position;
 		#region Public contructors
 

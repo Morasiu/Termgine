@@ -91,6 +91,7 @@ namespace Termgine {
     #region Private methods
 
     private void AddObjectToGlobalContent(string gameObjectContent, Vector2 position) {
+      if (gameObjectContent == null) return;
       var contentLines = gameObjectContent.Split('\n');
       for (var y = 0; y < contentLines.Length; y++) {
         var globalPositionY = y + position.Y;
@@ -98,13 +99,14 @@ namespace Termgine {
         for (var x = 0; x < contentLines[y].Length; x++) {
           var globalPositionX = x + position.X;
           if (globalPositionX >= Width) break;
-          if (contentLines[y][x] != ' ')
+          if (contentLines[y][x] != ' ' && contentLines[y][x] != '\0')
             _content[globalPositionY][globalPositionX] = contentLines[y][x];
         }
       }
     }
 
     private void AddObjectColorToGlobalColorMask(string gameObjectColorMask, Vector2 position) {
+      if (gameObjectColorMask == null) return;
       var contentLines = gameObjectColorMask.Split('\n');
       for (var y = 0; y < contentLines.Length; y++) {
         var globalPositionY = y + position.Y;
@@ -112,7 +114,7 @@ namespace Termgine {
         for (var x = 0; x < contentLines[y].Length; x++) {
           var globalPositionX = x + position.X;
           if (globalPositionX >= Width) break;
-          if (contentLines[y][x] != ' ')
+          if (contentLines[y][x] != ' ' && contentLines[y][x] != '\0')
             _colorMask[globalPositionY][globalPositionX] = contentLines[y][x];
         }
       }

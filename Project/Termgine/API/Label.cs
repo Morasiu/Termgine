@@ -1,5 +1,5 @@
 namespace Termgine {
-	class Label : GameObject {
+	public class Label : GameObject {
 
 		#region Constructors
 

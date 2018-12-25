@@ -2,7 +2,7 @@ using System;
 using System.Text;
 
 namespace Termgine {
-	class Border : GameObject {
+	public class Border : GameObject {
 		#region public Contructors
 
 		public Border(GameObject gameObject, char borderColor) : this (gameObject, borderColor, BorderType.Simple) {}
@@ -35,7 +35,10 @@ namespace Termgine {
 			var lines = gameObject.ColorMask.Split('\n');
 			foreach (var line in lines) {
 				newColorMask.Append(color);
-				newColorMask.Append(line);
+				for(int j = 0; j < gameObject.GetWidth(); j++){
+					if (j < line.Length) newColorMask.Append(line[j]);
+					else newColorMask.Append(' ');
+				}
 				newColorMask.Append(color + "\n");
 			}
 			newColorMask.Append(color);
@@ -87,7 +90,10 @@ namespace Termgine {
 			var lines = gameObject.Content.Split('\n');
 			foreach (var line in lines) {
 				newContent.Append(vertical);
-				newContent.Append(line);
+				for(int j = 0; j < gameObject.GetWidth(); j++){
+					if (j < line.Length) newContent.Append(line[j]);
+					else newContent.Append(' ');
+				}
 				newContent.Append(vertical + "\n");
 			}
 			newContent.Append(leftBottomCorner);
