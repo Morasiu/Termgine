@@ -3,38 +3,26 @@ using System.Text;
 
 namespace Termgine {
 	public class GameObject {
-		private Vector2 _position;
 		#region Public contructors
 
-		public GameObject(Vector2 position, string content, string colorMask) : this(position, content) {
-			ColorMask = colorMask;
-		}
-
-		public GameObject(Vector2 position, string content) : this(position) {
-			Content = content;
-		}
-		public GameObject(Vector2 position, string content, char color) : this(position, content) {
-			SetColor(color);
-		}
-
-
-		public GameObject(string content) {
-			Content = content;
-			Position = Vector2.Zero;
-		}
-
-		#endregion
-
-		#region Protected constructor
-
-    protected GameObject(){
+		public GameObject(){
       Position = Vector2.Zero;
       Content = "";
       ColorMask = "";
     }
 
-		protected GameObject(Vector2 position) {
+		public GameObject(Vector2 position, string content) {
 			Position = position;
+			Content = content;
+			SetColor('7'); // White
+		}
+
+		public GameObject(Vector2 position, string content, string colorMask) : this(position, content) {
+			ColorMask = colorMask;
+		}
+
+		public GameObject(Vector2 position, string content, char color) : this(position, content) {
+			SetColor(color);
 		}
 
 		#endregion
@@ -59,8 +47,7 @@ namespace Termgine {
 
 		public void SetColor(char color) {
 			var builder = new StringBuilder();
-			for (var index = 0; index < Content.Length; index++)
-			{
+			for (var index = 0; index < Content.Length; index++) {
 				if (Content[index] == '\n' || Content[index] == ' ') builder.Append(Content[index]);
 				else builder.Append(color);
 			}
@@ -84,10 +71,12 @@ namespace Termgine {
       return maxWidth;
     }
 
-
 		#endregion
 
 		#region Private variables
+
+		private Vector2 _position;
+
 		#endregion
 	}
 }

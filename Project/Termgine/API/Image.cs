@@ -4,9 +4,6 @@ namespace Termgine {
   public class Image : GameObject {
     #region Constructors
 
-    public Image(Vector2 position) : base(position) {
-    }
-
     public Image(Vector2 position, string content, char color) : base (position, content, color) {
     }
 
