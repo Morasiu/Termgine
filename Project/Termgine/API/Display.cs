@@ -68,9 +68,7 @@ namespace Termgine {
 			Console.CursorVisible = false;
 		}
 
-		public ConsoleKeyInfo WaitForKey() {
-			return Console.ReadKey(true);
-		}
+		public ConsoleKeyInfo WaitForKey() => Console.ReadKey(true);
 
 		#endregion
 
