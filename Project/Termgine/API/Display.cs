@@ -92,16 +92,14 @@ namespace Termgine {
 
 		#region Private methods
 
-		private void DrawCurrentScene(){
+		private void DrawCurrentScene() {
 			if (CurrentScene == null) throw new NullReferenceException("CurrentScene is null");
 			Console.SetCursorPosition(0, 0);
 			var currentContent = CurrentScene.Content.Split('\n');
-			var currentColors = CurrentScene.ContentColors.Split('\n');
+			var currentColors = CurrentScene.ColorMask.Split('\n');
 
-			for (var y = 0; y < CurrentScene.Height; y++)
-			{
-				for (var x = 0; x < CurrentScene.Width; x++)
-				{
+			for (var y = 0; y < CurrentScene.Height; y++) {
+				for (var x = 0; x < CurrentScene.Width; x++) {
 					var color = GetColorFromNumber(currentColors[y][x]);
 					WriteInColor(currentContent[y][x], color);
 				}
@@ -114,8 +112,7 @@ namespace Termgine {
 		}
 
 		private ConsoleColor GetColorFromNumber(char c) {
-			switch (c)
-			{
+			switch (c) {
 				case ' ':
 					return BackgroundColor;
 				case '0':

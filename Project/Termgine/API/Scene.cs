@@ -16,7 +16,7 @@ namespace Termgine {
 
     #region Public variables
 
-    public List<GameObject> GameObjects;
+    public List<GameObject> GameObjects { get; set; }
 
     public int Width {
       get => _width;
@@ -47,7 +47,7 @@ namespace Termgine {
       }
     }
 
-    public string ContentColors {
+    public string ColorMask {
       get {
         var colorMask = new StringBuilder();
         UpdateColorMask();
@@ -63,18 +63,12 @@ namespace Termgine {
 
     #region Public methods
 
-    public void AddObject(GameObject o) {
-      AddObjectAt(o, o.Position);
-    }
-
-    public void AddObjectAt(GameObject o, Vector2 position) {
-      if (position.X > Width || position.Y > Height)
+    public void AddObject(GameObject gameObject) {
+      if (gameObject.Position.X > Width || gameObject.Position.Y > Height)
         throw new ArgumentException("Position set outside scene size");
-
-      o.Position = position;
-      GameObjects.Add(o);
-      AddObjectToGlobalContent(o.Content, position);
-      AddObjectColorToGlobalColorMask(o.ColorMask, position);
+            GameObjects.Add(gameObject);
+      AddObjectToGlobalContent(gameObject.Content, gameObject.Position);
+      AddObjectColorToGlobalColorMask(gameObject.ColorMask, gameObject.Position);
     }
 
     #endregion
