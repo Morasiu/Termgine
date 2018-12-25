@@ -1,7 +1,7 @@
 # Termgine
 Game engine for games in terminal.
 
-Check our [Wiki](https://github.com/Morasiu/Termgine/wiki)
+Check our [Wiki](https://github.com/Morasiu/Termgine/wiki) and [Trello](https://trello.com/b/1EpbQfUH/termgine)
 
 ## Examples
 * D&D Menu
