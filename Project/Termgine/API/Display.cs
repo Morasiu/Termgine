@@ -128,9 +128,11 @@ namespace Termgine {
 				case '6':
 					return ConsoleColor.Cyan;
 				case '7':
-					return ConsoleColor.White;
-				case '8':
 					return ConsoleColor.DarkYellow;
+				case '8':
+					return ConsoleColor.Gray;
+				case '9':
+					return ConsoleColor.White;
 				default:
 					throw new ArgumentException("Wrong color mask: " + c);
 			}
