@@ -30,6 +30,7 @@ namespace ColorsDemo {
             "777777777777777\n" + 
             "888888888\n" +
             "9999999999\n";
+
             var colors = new Label(display.Center, colorsTestContent, colorsTestColorMask);
             var backgroudnColorLabel = new Label(colors.Position + Vector2.Up * 2, "Background color", '9');
             scene.AddObject(colors);

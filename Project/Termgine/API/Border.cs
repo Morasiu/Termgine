@@ -17,7 +17,7 @@ namespace Termgine {
 
 		#region Public variables
 		
-		public BorderType BorderType;
+		public BorderType BorderType { get; }
 
 		#endregion
 
