@@ -53,27 +53,50 @@ namespace Termgine.Tests {
         #region Operators
 
         [Fact]
-        public void AddVectors_Vector2_ShouldVector2X2Y2() {
+        public void AddVectors_Vector2_ShouldReturnVector2X2Y2() {
             var testVector = new Vector2(1, 1) + new Vector2(1, 1);
             Assert.Equal(new Vector2(2, 2), testVector);
         }
 
         [Fact]
-        public void SubstarctVectors_Vector2_ShouldVector2X1Y1() {
+        public void SubstarctVectors_Vector2_ShouldReturnVector2X1Y1() {
             var testVector = new Vector2(3, 3) - new Vector2(2, 2);
             Assert.Equal(new Vector2(1, 1), testVector);
         }
 
         [Fact]
-        public void MultiplyVectors_Vector2_ShouldVector2X6Y6() {
+        public void MultiplyVectors_Vector2_ShouldReturnVector2X6Y6() {
             var testVector = new Vector2(2, 2) * new Vector2(3, 3);
             Assert.Equal(new Vector2(6, 6), testVector);
         }
 
         [Fact]
-        public void DivideVectors_Vector2_ShouldVector2X2Y2() {
-            var testVector = new Vector2(6, 6) * new Vector2(3, 3);
+        public void DivideVectors_Vector2_ShouldReturnVector2X2Y2() {
+            var testVector = new Vector2(6, 6) / new Vector2(3, 3);
             Assert.Equal(new Vector2(2, 2), testVector);
+        }
+
+        [Fact]
+        public void EqualsVectors_Vector2_ShouldReturnTrue() {
+            var testVector = new Vector2(1, 1);
+            var equalVector = new Vector2(1, 1);
+            Assert.True(testVector == equalVector);
+            Assert.True(testVector.Equals(equalVector));
+        }
+
+        [Fact]
+        public void EqualsVectors_Vector2_ShouldReturnFalse() {
+            var testVector = new Vector2(1, 1);
+            var notEqualVector = new Vector2(2, 2);
+            Assert.False(testVector == notEqualVector);
+            Assert.False(testVector.Equals(notEqualVector));
+        }
+
+        [Fact]
+        public void NotEqualsVectors_Vector2_ShouldReturnVectorT2rue() {
+            var testVector = new Vector2(1, 1);
+            var notEqualVector = new Vector2(2, 2);
+            Assert.True(testVector != notEqualVector);
         }
 
         #endregion
