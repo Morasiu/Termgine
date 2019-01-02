@@ -21,6 +21,13 @@ You can catch me on [Gitter](https://gitter.im/Termgine) too!
 
   ![Mario](Docs/mario.PNG)
 
+
+# Development
+
+Do you want to help? Great!
+
+See [CONTRIBUTING](https://github.com/Morasiu/Termgine/blob/master/Docs/CONTRIBUTING.md) 👍
+
 ## Authors
 
 * Morasiu (morasiu2@gmail.com)
