@@ -93,10 +93,17 @@ namespace Termgine.Tests {
         }
 
         [Fact]
-        public void NotEqualsVectors_Vector2_ShouldReturnVectorT2rue() {
+        public void NotEqualsVectors_Vector2_ShouldReturnTrue() {
             var testVector = new Vector2(1, 1);
             var notEqualVector = new Vector2(2, 2);
             Assert.True(testVector != notEqualVector);
+        }
+
+        [Fact]
+        public void NotEqualsVectors_Vector2_ShouldReturnFalse() {
+            var testVector = new Vector2(1, 1);
+            var equalVector = new Vector2(1, 1);
+            Assert.True(testVector != equalVector);
         }
 
         #endregion
