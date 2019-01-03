@@ -103,7 +103,7 @@ namespace Termgine.Tests {
         public void NotEqualsVectors_Vector2_ShouldReturnFalse() {
             var testVector = new Vector2(1, 1);
             var equalVector = new Vector2(1, 1);
-            Assert.True(testVector != equalVector);
+            Assert.False(testVector != equalVector);
         }
 
         #endregion
