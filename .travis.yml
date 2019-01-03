@@ -1,7 +1,10 @@
 language: csharp
 mono: none
-dotnet: 2.1
+sudo: required
+dist: xenial
+dotnet: 2.2
 script:
- - cd ./Project/Termgine
- - dotnet restore
- - dotnet build
+    - cd ./Project/Termgine
+    - dotnet restore
+    - dotnet build
+    - dotnet test ../Tests/Termgine.Tests/Termgine.Tests.csproj
