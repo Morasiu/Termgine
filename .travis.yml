@@ -1,2 +1,4 @@
 language: csharp
-solution: ./Project/Termgine.sln
+dotnet: 2.2
+script:
+ - dotnet restore
