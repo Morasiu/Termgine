@@ -6,11 +6,11 @@ namespace Termgine {
 	public class GameObject {
 		#region Public contructors
 
-		public GameObject(){
-      Position = Vector2.Zero;
-      Content = "";
-      ColorMask = "";
-    }
+		public GameObject() {
+			Position = Vector2.Zero;
+			Content = "";
+			ColorMask = "";
+		}
 
 		public GameObject(Vector2 position, string content) {
 			Position = position;
@@ -30,13 +30,14 @@ namespace Termgine {
 
 		#region Public variables
 
-		public Vector2 Position { get => _position; 
-      set {
-        if(value.X < 0 || value.Y < 0)
-          throw new ArgumentOutOfRangeException("Position cannot be less than zero");
-        _position = value;
-        }
-    }
+		public Vector2 Position {
+			get => _position;
+			set {
+				if (value.X < 0 || value.Y < 0)
+					throw new ArgumentOutOfRangeException("Position cannot be less than zero");
+				_position = value;
+			}
+		}
 
 		public string Content { get; set; }
 
@@ -52,10 +53,10 @@ namespace Termgine {
 
 		public void SetColor(char color) {
 			var charValue = Convert.ToInt16(color);
-			if (charValue < 48 || charValue > 57) throw new ArgumentException("Color not recognized");
+			if (charValue < 48 || charValue > 57)throw new ArgumentException("Color not recognized");
 			var builder = new StringBuilder();
 			for (var index = 0; index < Content.Length; index++) {
-				if (Content[index] == '\n' || Content[index] == ' ') builder.Append(Content[index]);
+				if (Content[index] == '\n' || Content[index] == ' ')builder.Append(Content[index]);
 				else builder.Append(color);
 			}
 			ColorMask = builder.ToString();
