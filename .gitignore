@@ -502,3 +502,4 @@ ASALocalRun/
 
 # My ingnores files. Mostly VS code
 .vscode/
+/Project/.vscode/
