@@ -1,5 +1,6 @@
 # Termgine
 
+[![Build Status](https://travis-ci.com/Morasiu/Termgine.svg?branch=master)](https://travis-ci.com/Morasiu/Termgine)
 [![GitHub release](https://img.shields.io/github/tag/Morasiu/Termgine.svg)](https://github.com/Morasiu/Termgine/tags)
 [![Made with .Net Core](https://img.shields.io/badge/Made%20with-.Net%20Core-blue.svg)](https://dotnet.microsoft.com/)
 [![GitHub issues](https://img.shields.io/github/issues/Morasiu/Termgine.svg)](https://GitHub.com/Morasiu/Termgine/issues/)
