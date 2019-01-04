@@ -15,7 +15,8 @@ namespace Termgine {
         public GameObject(Vector2 position, string content) {
             Position = position;
             Content = content;
-            SetColor('7'); // White
+            // Double color change, if other contructor used!
+            SetColor('9'); // White
         }
 
         public GameObject(Vector2 position, string content, string colorMask) : this(position, content) {
