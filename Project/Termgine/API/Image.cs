@@ -1,21 +1,21 @@
-﻿using System;
+using System;
 
 namespace Termgine {
-  public class Image : GameObject {
-    #region Constructors
+    public class Image : GameObject {
+        #region Constructors
 
-    public Image(Vector2 position, string content, char color) : base(position, content, color) {}
+        public Image(Vector2 position, string content, char color) : base(position, content, color) {}
 
-    public Image(Vector2 position, string content, string colorMask) : base(position, content, colorMask) {}
+        public Image(Vector2 position, string content, string colorMask) : base(position, content, colorMask) {}
 
-    #endregion
+        #endregion
 
-    #region Public variables
+        #region Public variables
 
-    #endregion
+        #endregion
 
-    #region Public methods
+        #region Public methods
 
-    #endregion
-  }
+        #endregion
+    }
 }
