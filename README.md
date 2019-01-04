@@ -6,11 +6,11 @@
 [![GitHub issues](https://img.shields.io/github/issues/Morasiu/Termgine.svg)](https://GitHub.com/Morasiu/Termgine/issues/)
 [![GitHub license](https://img.shields.io/github/license/Morasiu/Termgine.svg)](https://github.com/Morasiu/Termgine/blob/master/LICENSE)
 
-Game engine for terminal games writen in `C#` and `.Net Core`
+Game engine for terminal based games writen in `C#` and `.Net Core`
 
-Be sure to check our [Wiki](https://github.com/Morasiu/Termgine/wiki) and [Trello](https://trello.com/b/1EpbQfUH/termgine)
+Be sure to check our [Wiki](https://github.com/Morasiu/Termgine/wiki)📖 and [Trello](https://trello.com/b/1EpbQfUH/termgine)✅
 
-and let's [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted) 👍
+and let's [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted)🎮
 
 You can catch me on [Gitter](https://gitter.im/Termgine) too!
 ## Examples
