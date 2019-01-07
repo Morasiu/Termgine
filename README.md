@@ -6,24 +6,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/Morasiu/Termgine.svg)](https://GitHub.com/Morasiu/Termgine/issues/)
 [![GitHub license](https://img.shields.io/github/license/Morasiu/Termgine.svg)](https://github.com/Morasiu/Termgine/blob/master/LICENSE)
 
-Game engine for terminal based games writen in `C#` and `.Net Core`
-
-Be sure to check our [Wiki](https://github.com/Morasiu/Termgine/wiki)📖 and [Trello](https://trello.com/b/1EpbQfUH/termgine)✅
-
-and let's [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted)🎮
-
-You can catch me on [Gitter](https://gitter.im/Termgine) too!
-## Examples
-* D&D Menu
-  ![D&D](Docs/D&D_menu.png)
-
-
-* Mario (in color!)
-
-  ![Mario](Docs/mario.PNG)
-
-
-If you like this project, give it a star 🌟!
+Game engine for making terminal based games writen in `C#` and `.Net Core`
 
 ## Getting started! 🎮
 
@@ -43,7 +26,23 @@ If you like this project, give it a star 🌟!
 4. Add `using Termgine` reference.
 5. Create something great!
 
-> See [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted) for more information!
+
+> Be sure to check our [Wiki](https://github.com/Morasiu/Termgine/wiki)📖 and [Trello](https://trello.com/b/1EpbQfUH/termgine)✅
+> More information about how to start [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted)🎮
+> You can catch me on [Gitter](https://gitter.im/Termgine)!
+## Examples
+* D&D Menu
+  ![D&D](Docs/D&D_menu.png)
+
+
+* Mario (in color!)
+
+  ![Mario](Docs/mario.PNG)
+
+
+If you like this project, give it a star 🌟!
+
+
 
 ## Development
 
