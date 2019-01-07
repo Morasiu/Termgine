@@ -23,7 +23,7 @@ namespace Termgine {
 
     private static Scene SetupDragonTalkScene() {
       var scene = new Scene();
-      var dragonFace = new Image(Vector2.Zero, File.ReadAllText("Resources/dragonFace.aa"), '1');
+      var dragonFace = new Image(Vector2.Zero, File.ReadAllText("Resources/dragonFace.aa").Replace("\r", ""), '1');
       dragonFace.Position = display.Center - dragonFace.Width / 2 + Vector2.Right * 20;
       var talk = "You are finally awake.\n" +
         "I'm Malfor, the Elder Red Dragon.\n" +
@@ -37,8 +37,8 @@ namespace Termgine {
     }
 
     private static Scene SetupWelcomeScene() {
-      var rightDragon = new Image(Vector2.Zero, File.ReadAllText("Resources/rightDragon.aa"), '1');
-      var leftDragon = new Image(Vector2.Zero, File.ReadAllText("Resources/leftDragon.aa"), '1');
+      var rightDragon = new Image(Vector2.Zero, File.ReadAllText("Resources/rightDragon.aa").Replace("\r", ""), '1');
+      var leftDragon = new Image(Vector2.Zero, File.ReadAllText("Resources/leftDragon.aa").Replace("\r", ""), '1');
       var scene = new Scene();
       var welcome = new Label(Vector2.Zero,
         "  Welcome to D&D  \n" +
