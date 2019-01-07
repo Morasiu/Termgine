@@ -25,7 +25,27 @@ You can catch me on [Gitter](https://gitter.im/Termgine) too!
 
 If you like this project, give it a star 🌟!
 
-# Development
+## Getting started! 🎮
+
+1. Create new console project.
+   * You can use `dotnet new console`
+2. Download Termgine dll from [Releases](https://github.com/Morasiu/Termgine/releases).
+3. Add refrence to your console project.
+   * Use Visual Studio or
+   * Add this lines to `YourProject.csproj`
+    ```
+    <ItemGroup>
+        <Reference Include="Termgine">
+            <HintPath>Path/To/Termgine.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    ```
+4. Add `using Termgine` reference.
+5. Create something great!
+
+> See [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted) for more information!
+
+## Development
 
 Do you want to help? Great!
 
