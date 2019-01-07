@@ -23,6 +23,8 @@ You can catch me on [Gitter](https://gitter.im/Termgine) too!
   ![Mario](Docs/mario.PNG)
 
 
+If you like this project, give it a star 🌟!
+
 # Development
 
 Do you want to help? Great!
