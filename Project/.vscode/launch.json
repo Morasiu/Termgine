@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.2/DnD.dll",
+            "program": "${workspaceFolder}/Demos/DnD/bin/Debug/netcoreapp2.2/DnD.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",

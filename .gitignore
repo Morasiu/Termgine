@@ -502,4 +502,5 @@ ASALocalRun/
 
 # My ingnores files. Mostly VS code
 .vscode/
-/Project/.vscode/
+Project/.vscode/
+Project/.vscode/launch.json
