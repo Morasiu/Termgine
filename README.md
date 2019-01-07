@@ -27,8 +27,9 @@ Game engine for making terminal based games writen in `C#` and `.Net Core`
 5. Create something great!
 
 
-> Be sure to check our [Wiki](https://github.com/Morasiu/Termgine/wiki)📖 and [Trello](https://trello.com/b/1EpbQfUH/termgine)✅
-> More information about how to start [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted)🎮
+> Be sure to check our [Wiki](https://github.com/Morasiu/Termgine/wiki)📖.
+> More information about how to [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted)🎮
+
 > You can catch me on [Gitter](https://gitter.im/Termgine)!
 ## Examples
 * D&D Menu
@@ -49,6 +50,8 @@ If you like this project, give it a star 🌟!
 Do you want to help? Great!
 
 See [CONTRIBUTING](https://github.com/Morasiu/Termgine/blob/master/Docs/CONTRIBUTING.md) 👍
+
+Also check our [Trello](https://trello.com/b/1EpbQfUH/termgine)✅ and pick a task!
 
 ## Authors
 
