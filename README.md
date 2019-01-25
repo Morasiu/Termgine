@@ -30,7 +30,7 @@ Game engine for making terminal based games writen in `C#` and `.Net Core`
 > Be sure to check our [Wiki](https://github.com/Morasiu/Termgine/wiki)📖.
 > More information about how to [Get Started](https://github.com/Morasiu/Termgine/wiki/GetStarted)🎮
 
-> You can catch me on [Gitter](https://gitter.im/Termgine)!
+> You can catch me on [Discord](https://discord.gg/7BwJTcP)!
 ## Examples
 * D&D Menu
   ![D&D](Docs/D&D_menu.png)
