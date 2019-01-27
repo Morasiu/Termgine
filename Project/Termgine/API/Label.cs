@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace Termgine {
     public class Label : GameObject {
 

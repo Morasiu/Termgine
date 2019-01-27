@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 namespace Termgine {
@@ -88,10 +89,10 @@ namespace Termgine {
             if (gameObjectContent == null)return;
             var contentLines = gameObjectContent.Split('\n');
             for (var y = 0; y < contentLines.Length; y++) {
-                var globalPositionY = y + position.Y;
+                var globalPositionY = (int)(y + position.Y);
                 if (globalPositionY >= Height)continue;
                 for (var x = 0; x < contentLines[y].Length; x++) {
-                    var globalPositionX = x + position.X;
+                    var globalPositionX = (int)(x + position.X);
                     if (globalPositionX >= Width)break;
                     if (contentLines[y][x] != ' ' && contentLines[y][x] != '\0')
                         _content[globalPositionY][globalPositionX] = contentLines[y][x];
@@ -103,15 +104,15 @@ namespace Termgine {
             if (gameObjectColorMask == null)return;
             var contentLines = gameObjectColorMask.Split('\n');
             for (var y = 0; y < contentLines.Length; y++) {
-                var globalPositionY = y + position.Y;
+                var globalPositionY = (int)(y + position.Y);
                 if (globalPositionY >= Height)continue;
                 for (var x = 0; x < contentLines[y].Length; x++) {
-                    var globalPositionX = x + position.X;
+                    var globalPositionX = (int)(x + position.X);
                     if (globalPositionX >= Width)break;
                     if (contentLines[y][x] != ' ' && contentLines[y][x] != '\0')
                         _colorMask[globalPositionY][globalPositionX] = contentLines[y][x];
                 }
-            }
+			}
         }
 
         private void UpdateContent() {
