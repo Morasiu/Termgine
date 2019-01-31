@@ -111,7 +111,7 @@ namespace Termgine {
                     if (contentLines[y][x] != ' ' && contentLines[y][x] != '\0')
                         _colorMask[globalPositionY][globalPositionX] = contentLines[y][x];
                 }
-            }
+			}
         }
 
         private void UpdateContent() {
