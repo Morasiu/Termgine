@@ -56,6 +56,7 @@ Also check our [Trello](https://trello.com/b/1EpbQfUH/termgine)✅ and pick a ta
 ## Authors
 
 * Morasiu (morasiu2@gmail.com)
+* [tkaczz](https://github.com/tkaczz)
 
 ## License
 
