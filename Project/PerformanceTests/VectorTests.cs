@@ -28,24 +28,24 @@ namespace PerformanceTests {
             return Vector2.One + Vector2.Left;
         }
 
-        [Benchmark]
-        public bool Vector2OrgEquals() {
-            return Termgine.Tested.Vector2.One == Termgine.Tested.Vector2.Zero;
-        }
+        //[Benchmark]
+        //public bool Vector2OrgEquals() {
+        //    return Termgine.Tested.Vector2.One == Termgine.Tested.Vector2.Zero;
+        //}
 
-        [Benchmark]
-        public bool Vector2OrgNotEquals() {
-            return Termgine.Tested.Vector2.One != Termgine.Tested.Vector2.Zero;
-        }
+        //[Benchmark]
+        //public bool Vector2OrgNotEquals() {
+        //    return Termgine.Tested.Vector2.One != Termgine.Tested.Vector2.Zero;
+        //}
 
-        [Benchmark]
-        public Termgine.Tested.Vector2 SubstractOrg() {
-            return Termgine.Tested.Vector2.One - Termgine.Tested.Vector2.Left;
-        }
+        //[Benchmark]
+        //public Termgine.Tested.Vector2 SubstractOrg() {
+        //    return Termgine.Tested.Vector2.One - Termgine.Tested.Vector2.Left;
+        //}
 
-        [Benchmark]
-        public Termgine.Tested.Vector2 AdditionOrg() {
-            return Termgine.Tested.Vector2.One + Termgine.Tested.Vector2.Left;
-        }
+        //[Benchmark]
+        //public Termgine.Tested.Vector2 AdditionOrg() {
+        //    return Termgine.Tested.Vector2.One + Termgine.Tested.Vector2.Left;
+        //}
     }
 }
