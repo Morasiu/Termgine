@@ -15,4 +15,8 @@
     <None Remove="NewFolder\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="DefaultEcs" Version="0.9.0" />
+  </ItemGroup>
+
 </Project>
