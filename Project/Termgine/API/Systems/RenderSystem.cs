@@ -2,16 +2,25 @@
 using DefaultEcs.System;
 using DefaultEcs.Threading;
 using System;
+using System.Text;
 using Termgine.API.Components;
+using Termgine.API.Extensions;
 
 namespace Termgine.API.Systems {
     [With(typeof(Render))]
-    public class RenderSystem : AComponentSystem<float, Render> {
-        public RenderSystem(World world, IParallelRunner _runner) : base(world, _runner) { }
+    internal class RenderSystem : AComponentSystem<float, Render> {
+        internal RenderSystem(World world, IParallelRunner _runner) : base(world, _runner) {
+            Console.CursorVisible = false;
+        }
 
         protected override void Update(float elapsedTime, ref Render render) {
-            Console.SetCursorPosition(render.X, render.Y);
-            Console.Write(render.Content);
+            if (!render.IsDynamic) {
+                string[] lines = render.Content.GetLines();
+                for (int i = 0; i < lines.Length; i++) {
+                    Console.SetCursorPosition(render.X, render.Y + i);
+                    Console.Write(lines[i]);
+                }
+            } 
         }
     }
 }

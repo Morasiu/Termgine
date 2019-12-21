@@ -8,7 +8,7 @@ namespace Demo {
     public class GameSystem {
         public World World { get; set; }
 
-        private IParallelRunner _runner;
+        private readonly IParallelRunner _runner;
 
         public GameSystem() {
             World = new World();
@@ -18,7 +18,9 @@ namespace Demo {
 
         public void Run() {
             var gameTime = DateTime.Now;
-            var sequentialSystem = new SequentialSystem<float>(new RenderSystem(World, _runner));
+            var sequentialSystem = new SequentialSystem<float>(
+                new RenderSystem(World, _runner)
+                );
             TimeSpan elapsedTime;
             while (true) {
                 elapsedTime = DateTime.Now - gameTime;
@@ -26,5 +28,4 @@ namespace Demo {
             }
         }
     }
-
 }
