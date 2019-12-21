@@ -8,6 +8,8 @@
 
 Game engine for making terminal based games writen in `C#` and `.Net Core`
 
+PS. Project is not dead. I'm just rewriting it to ECS.
+
 ## Getting started! 🎮
 
 1. Create new console project.
@@ -46,8 +48,6 @@ Join our Discord!
 
 
 If you like this project, give it a star 🌟!
-
-
 
 ## Development
 
