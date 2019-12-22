@@ -19,7 +19,7 @@ namespace Demo {
         public void Run() {
             var gameTime = DateTime.Now;
             var sequentialSystem = new SequentialSystem<float>(
-                new RenderSystem(World, _runner)
+                    new RenderSystem(World, _runner)
                 );
             TimeSpan elapsedTime;
             while (true) {
